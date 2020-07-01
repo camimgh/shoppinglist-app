@@ -12,10 +12,16 @@ class App extends React.Component<{}, {}> {
         <p>This is Bunmi and Cami's shopping list app.</p>
         <ol>
           <li>hi</li>
+          <li>milk</li>
+          <li>eggs</li>
         </ol>
       </div>
     );
   }
 }
 
+class ShoppingItem {
+  public name = "";
+  public price = 0.0;
+}
 export default App;
