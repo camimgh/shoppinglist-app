@@ -6,7 +6,12 @@ interface AppState {
   items: Array<string>
 }
 class App extends React.Component<{}, AppState> {
-
+  constructor(props: any) {
+    super(props); //why does it not accept super(props, state)??
+    this.state = {
+      items: []
+    }
+  }
   public render() {
     return (
       <div className="App">
