@@ -2,7 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends React.Component<{}, {}> {
+interface AppState {
+  items: Array<string>
+}
+class App extends React.Component<{}, AppState> {
+
   public render() {
     return (
       <div className="App">
