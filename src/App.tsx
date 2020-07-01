@@ -1,15 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+class ShoppingItem {
+  public name = "";
+  public price = 0.0;
+}
+
 interface AppState {
-  items: Array<string>
+  items: Array<ShoppingItem>
 }
 class App extends React.Component<{}, AppState> {
   constructor(props: any) {
     super(props); //why does it not accept super(props, state)??
+    
+    const pizza: ShoppingItem = {
+      name: "Pizza",
+      price: 4.5
+    }
+    
+    const egg: ShoppingItem = {
+      name: "Egg",
+      price: 10
+    }
+    
+    const milk: ShoppingItem = {
+      name: "Milk",
+      price: 3.5
+    }
     this.state = {
-      items: ["Pizza", "Egg", "Milk"]
+      items: [pizza, egg, milk]
     }
   }
   public render() {
@@ -21,12 +40,13 @@ class App extends React.Component<{}, AppState> {
         <p>This is Bunmi and Cami's shopping list app.</p>
         <ol>
           {this.state.items.map(item => (
-            <li key={item}>{item}</li>
+            <li key={item.name}>{item.name} ${item.price}</li>
           ))}
         </ol>
         <form onSubmit={this.submitForm}>
           <input type="text" placeholder="Enter your item here" onChange={this.changeInputName} />
-          <input type="number" placeholder="Enter your price here" onChange={this.changeInputPrice} />
+          <input type="text" placeholder="Enter your price here" onChange={this.changeInputPrice} />
+          <input type="submit" value="Submit"/>
         </form>
       </div>
     );
@@ -37,29 +57,18 @@ class App extends React.Component<{}, AppState> {
   private changeInputName = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.inputName = event.target.value;
   }
+
+  private changeInputPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.inputPrice = event.target.value;
+  }
   
   private submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     alert("item name: " + this.inputName + "\nitem price: " + this.inputPrice);
+    const newItem: ShoppingItem = { name: this.inputName, price: parseFloat(this.inputPrice) }
+    this.setState({
+      items: this.state.items.concat(newItem)
+    });
   }
-}
-class ShoppingItem {
-  public name = "";
-  public price = 0.0;
-}
-
-const pizza: ShoppingItem = {
-  name: "Pizza",
-  price: 4.5
-}
-
-const egg: ShoppingItem = {
-  name: "Egg",
-  price: 10
-}
-
-const milk: ShoppingItem = {
-  name: "Milk",
-  price: 3.5
 }
 export default App;
