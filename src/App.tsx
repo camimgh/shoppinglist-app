@@ -9,7 +9,7 @@ class App extends React.Component<{}, AppState> {
   constructor(props: any) {
     super(props); //why does it not accept super(props, state)??
     this.state = {
-      items: ["pizza", "egg", "milk"]
+      items: ["Pizza", "Egg", "Milk"]
     }
   }
   public render() {
@@ -20,9 +20,9 @@ class App extends React.Component<{}, AppState> {
         </header>
         <p>This is Bunmi and Cami's shopping list app.</p>
         <ol>
-          <li>hi</li>
-          <li>milk</li>
-          <li>eggs</li>
+          {this.state.items.map(item => (
+            <li key={item}>{item}</li>
+          ))}
         </ol>
       </div>
     );
