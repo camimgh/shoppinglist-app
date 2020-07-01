@@ -9,6 +9,10 @@ class App extends React.Component<{}, {}> {
         <header className="App-header">
           <h1>My Shopping App</h1>
         </header>
+        <p>This is Bunmi and Cami's shopping list app.</p>
+        <ol>
+          <li>hi</li>
+        </ol>
       </div>
     );
   }
