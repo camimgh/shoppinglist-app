@@ -24,8 +24,23 @@ class App extends React.Component<{}, AppState> {
             <li key={item}>{item}</li>
           ))}
         </ol>
+        <form onSubmit={this.submitForm}>
+          <input type="text" placeholder="Enter your item here" onChange={this.changeInputName} />
+          <input type="number" placeholder="Enter your price here" onChange={this.changeInputPrice} />
+        </form>
       </div>
     );
+  }
+  private inputName = "";
+  private inputPrice = "";
+  
+  private changeInputName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.inputName = event.target.value;
+  }
+  
+  private submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    alert("item name: " + this.inputName + "\nitem price: " + this.inputPrice);
   }
 }
 class ShoppingItem {
