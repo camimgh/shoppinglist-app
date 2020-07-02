@@ -45,7 +45,7 @@ class App extends React.Component<{}, AppState> {
         </ol>
         <form onSubmit={this.submitForm}>
           <input type="text" placeholder="Enter your item here" onChange={this.changeInputName} />
-          <input type="text" placeholder="Enter your price here" onChange={this.changeInputPrice} />
+          <input type="number" step=".01" placeholder="Enter your price here" onChange={this.changeInputPrice} />
           <input type="submit" value="Submit"/>
         </form>
       </div>
